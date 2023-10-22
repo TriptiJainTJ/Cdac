@@ -1,0 +1,295 @@
+1)	display a table of a particular number           
+2)	declare two numbers and one operator as a character. e.g. '+'
+using switch... case check which operator is declared and accordingly perform the action.
+3)	Display numbers  1 to 10 using loop
+4)	Display numbers from 3 to 30 except number 24  using loop.
+5)	Using ifÖÖ.else ifÖ.  Else,  display whether result is  fail, pass, second class , first class, Distinction etc.  
+
+6) display all prime numbers between 3 to 30
+
+7) using nested for loop display following :
+
+A  a
+A  b
+A  c
+
+B  a
+B  b
+B  c
+
+C  a
+C  b
+C  c
+
+8) solve following patten programs:
+
+
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+
+
+
+       * * * * 
+  	* * * 
+  	 * * 
+          * 
+
+
+    * 
+   * * 
+  * * * 
+ * * * * 
+  * * * 
+   * * 
+    * 
+
+
+Answers
+
+//1)	display a table of a particular number 
+package controlFlow;
+import java.util.Scanner;
+import static java.lang.System.out;
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int num;
+		out.println("enter a number which you a table of it");
+		num= sc.nextInt();
+		for(int i=1;i<=10;i++)
+		{
+			int res = num*i;
+			out.println(num+" * "+i+" = "+ res);
+		}
+
+	}
+
+}
+
+//2)	declare two numbers and one operator as a character. e.g.'+'
+package controlFlow;
+
+import static java.lang.System.out;
+
+import java.util.Scanner;
+
+public class q2 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int num1,num2;
+		char ch;
+		out.println("enter a num1");
+		num1= sc.nextInt();
+		out.println("enter a num2");
+		num2= sc.nextInt();
+		out.println("enter a opearator");
+		ch= sc.next().charAt(0);
+		
+		out.println(num1+ " " + ch + " "+ num2);
+
+	}
+
+}
+
+/*using switch... case check which operator is declared and accordingly perform the action.
+3)	Display numbers  1 to 10 using loop
+4)	Display numbers from 3 to 30 except number 24  using loop.
+5)	Using ifÖÖ.else ifÖ.  Else,  display whether result is  fail, pass, second class , first class, Distinction etc.  
+*/
+package controlFlow;
+
+import static java.lang.System.out;
+
+import java.util.Scanner;
+
+public class q3 
+{
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+	
+		out.println("3)	Display numbers  1 to 10 using loop");
+		out.println("4)	Display numbers from 3 to 30 except number 24  using loop.");
+		out.println("5)	Using ifÖÖ.else ifÖ.  Else,  display whether result is  fail, pass, second class , first class, Distinction etc.");
+		
+		out.println("enter a choice");
+		int choice = sc.nextInt();
+		
+		
+		switch(choice)
+		{
+		case 3:
+			for(int i=1;i<=10;i++)
+			{
+				out.println(i);
+			}
+			break;
+		case 4:
+			for(int i=3;i<=30;i++)
+			{
+				if(i==24)
+					continue;
+				out.println(i);
+			}
+			break;
+		case 5:
+			int marks;
+			out.println("enter marks");
+			marks = sc.nextInt();
+			if(marks>90)
+				out.println("Distinction");
+			else if(marks>80 && marks<=90)
+				out.println("first class");
+			else if(marks>70 && marks<=80)
+				out.println("second class");
+			else if(marks>60 && marks<=70)
+				out.println("pass");
+			else if(marks<50)
+				out.println("fail");
+			
+			break;
+			default:
+				out.println("invalid choice");
+		}
+
+
+	}
+
+}
+
+//6) display all prime numbers between 3 to 30
+package controlFlow;
+import static java.lang.System.out;
+
+public class q6 
+{
+
+	public static void main(String[] args)
+	{
+		int i;
+		for(i=3;i<=30;i++)
+		{
+			int count=0;
+			for(int j=1;j<=i;j++)
+			{
+				if(i%j==0)
+					count++;
+			}
+			if(count ==2)
+				out.println(i);
+		}
+	}
+
+}
+
+//7
+package controlFlow;
+import static java.lang.System.out;
+public class q7 
+{
+
+	public static void main(String[] args) 
+	{
+		char ch ='A';
+		char ch2 ='B';
+		char ch3 = 'C';
+		for(int i='a';i<='c';i++)
+		{
+			out.println(ch + " " + (char)i );
+		}
+		
+		for(int i='a';i<='c';i++)
+		{
+			out.println(ch2 + " " + (char)i );
+		}
+		
+		for(int i='a';i<='c';i++)
+		{
+			out.println(ch3 + " " + (char)i );
+		}
+	}
+
+}
+
+
+//8) solve following patten programs:
+package controlFlow;
+import static java.lang.System.out;
+public class q8 
+{
+
+	public static void main(String[] args) 
+	{
+		/*
+		 1)
+		for(int i=1;i<=5;i++)
+		{
+			for(int j=1;j<=5-i;j++)
+			{
+				out.print(" ");
+			}
+			for(int k=1;k<=i;k++)
+			{
+				out.print("* ");
+			}
+			out.println();
+		}
+		*/
+		/*
+		2)
+		for(int i=5;i>=1;i--)
+		{
+			for(int j=5;j>i;j--)
+			{
+				out.print(" ");
+			}
+			for(int k=1;k<=i;k++)
+			{
+				out.print("* ");
+			}
+			out.println();
+		}
+		*/
+		//3)
+		for(int i=1;i<=5;i++)
+		{
+			for(int j=5;j>i;j--)
+			{
+				out.print(" ");
+			}
+			for(int k=1;k<=i;k++)
+			{
+				out.print("* ");
+			}
+			out.println();
+		}
+		for(int i=5-1;i>=1;i--)
+		{
+			for(int j=5-1;j>=i;j--)
+			{
+				out.print(" ");
+			}
+			for(int k=1;k<=i;k++)
+			{
+				out.print("* ");
+			}
+			out.println();
+		}
+
+	}
+
+}
+
+
+
+
