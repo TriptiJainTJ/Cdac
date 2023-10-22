@@ -1,0 +1,49 @@
+package q1;
+interface Seventh
+{
+	void fun(int k);
+}
+class Student
+{
+	private String name;
+	private int age;
+	
+	Student(int k)
+	{
+		System.out.println("inside parameterized constructor"+k);
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+	public int getAge()
+	{
+		return age;
+	}
+	public String toString()
+	{
+		return "Name is [name "+name+" and age is [age "+age"]";
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Seventh ref = Sample::new;
+		ref.fun(200);
+		
+//		//lamda
+//		Seventh ref =(k)->{new Sample(k);};
+//		ref.fun(200);
+	}
+
+}

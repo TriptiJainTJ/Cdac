@@ -1,0 +1,81 @@
+create abstract class "Shape" with
+	a contract "draw()" and concrete behaviour "show()"
+
+create 3 child classes
+	Triangle, Rectangle and Circle
+
+define a class "ShapeDemo" with main
+inside main create an array of "Shape" of 3 elements. Store all the child class objects inside the array, traverse it and invoke "draw()" and "show()" methods polymorphically.
+
+Code:
+//Shape.java
+package q3;
+
+abstract public class Shape 
+{
+	public abstract void draw();
+	public void show()
+	{
+		System.out.println("Show your drawn thing");
+	}
+
+}
+
+//Triangle.java
+package q3;
+
+public class Triangle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Triangle is drawn");
+	}
+
+}
+
+//Rectangle.java
+package q3;
+
+public class Rectangle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Rectangle is drawn");
+	}
+
+}
+//Circle.java
+package q3;
+
+public class Circle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Circle is drawn");
+	}
+
+}
+
+//ShapeDemo.java
+package q3;
+
+public class ShapeDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		Shape arr[] = new Shape[3];
+		arr[0]= new Triangle();
+		arr[1]= new Rectangle();
+		arr[2]= new Circle();
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].show();
+			arr[i].draw();
+		}
+
+	}
+
+}
+
+

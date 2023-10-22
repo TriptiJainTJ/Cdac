@@ -1,0 +1,153 @@
+public interface PizzaIngredientFactory
+{
+	public Dough createDough();
+	public Sauce createSauce();
+	public Cheese createCheese();
+	public Pepperoni createPepperoni();
+	public Clams createClams();
+}
+define 2 implementations 
+	USPizzaIngredientFactory and IndianPizzaIngredientFactory
+
+create an array of "PizzaIngredientFactory" , store all the implemenations object inside it, traverse the array and invoke all the methods.
+
+Code:
+
+
+public interface PizzaIngredientFactory 
+{
+	public Dough createDough();
+	public Sauce createSauce();
+	public Cheese createCheese();
+	public Pepperoni createPepperoni();
+	public Clams createClams();
+}
+
+public class PizzaMAIN 
+{
+
+	public static void main(String[] args) 
+	{
+		PizzaIngredientFactory arr[] = new PizzaIngredientFactory[2];
+		arr[0]= new USPizzaIngredientFactory();
+		arr[1] = new IndianPizzaIngredientFactory();
+		
+		for(int i=0; i<arr.length;i++)
+		{
+			arr[i].createDough();
+			arr[i].createSauce();
+			arr[i].createCheese();
+			arr[i].createPepperoni();
+			arr[i].createClams();
+		}
+
+	}
+
+}
+
+
+public class USPizzaIngredientFactory implements PizzaIngredientFactory
+{
+	public Dough createDough()
+	{
+		System.out.println("For US :create dough");
+		return new Dough();
+	}
+	public Sauce createSauce()
+	{
+		System.out.println("create sauce");
+		return new Sauce();
+	}
+	public Cheese createCheese()
+	{
+		System.out.println("create cheese");
+		return new Cheese();
+	}
+	public Pepperoni createPepperoni()
+	{
+		System.out.println("create Pepperoni");
+		return new Pepperoni();
+	}
+	public Clams createClams()
+	{
+		System.out.println("create clams");
+		return new Clams();
+	}
+}
+
+
+public class IndianPizzaIngredientFactory implements PizzaIngredientFactory
+{
+	public Dough createDough()
+	{
+		System.out.println("For India: create dough");
+		return new Dough();
+	}
+	public Sauce createSauce()
+	{
+		System.out.println("create sauce");
+		return new Sauce();
+	}
+	public Cheese createCheese()
+	{
+		System.out.println("create cheese");
+		return new Cheese();
+	}
+	public Pepperoni createPepperoni()
+	{
+		System.out.println("create Pepperoni");
+		return new Pepperoni();
+	}
+	public Clams createClams()
+	{
+		System.out.println("create clams");
+		return new Clams();
+	}
+}
+
+
+public class Sauce 
+{
+	public String sauce()
+	{
+		return "Sauce";
+	}
+}
+
+
+public class Pepperoni 
+{
+	public String pepperoni()
+	{
+		return "Pepperoni";
+	}
+}
+
+public class Dough 
+{
+	public String dough()
+	{
+		return "dough";
+	}
+}
+
+
+
+public class Clams 
+{
+	public String clams()
+	{
+		return "Clams";
+	}
+}
+
+
+
+public class Cheese 
+{
+	public String cheese()
+	{
+		return "Cheese";
+	}
+
+}

@@ -1,0 +1,26 @@
+package q1;
+interface Sixth
+{
+	void disp5();
+}
+class Sample
+{
+	static void fun1()
+	{
+		System.out.println("fun1");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+//		Sixth ref = Sample::fun1;
+//		ref.disp5();
+		//lambda
+		Sixth ref =()->{Sample.fun1();};
+		ref.disp5();
+
+	}
+
+}

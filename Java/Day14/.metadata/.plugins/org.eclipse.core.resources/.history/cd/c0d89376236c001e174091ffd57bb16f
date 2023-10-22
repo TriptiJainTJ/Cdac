@@ -1,0 +1,19 @@
+package q1;
+interface MyInterface
+{
+	void fun();
+}
+public class Demo 
+{
+	static void perform()
+	{
+		MyInterface.fun();
+	}
+
+	public static void main(String[] args)
+	{
+		
+
+	}
+
+}

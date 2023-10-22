@@ -1,0 +1,62 @@
+//Myclass1.java
+/**
+ * 
+ */
+package devpack;
+
+/**
+ * 
+ */
+public class MyClass1 
+{
+	private int num;
+
+	/**
+	 * @return vaue of num
+	 */
+	public int getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num set for num variable
+	 */
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	/**
+	 * 
+	 */
+	public MyClass1() {
+		super();
+		this.num=num;
+		// num set for num variable
+	}
+
+	@Override
+	public String toString() {
+		return "MyClass1 num = " + num;
+	}
+	
+	
+	
+}
+//clientApp.java
+package clientpro;
+
+import devpack.MyClass1;
+
+public class clientApp 
+{
+
+	public static void main(String[] args) 
+	{
+		MyClass1 m1 = new MyClass1();
+		m1.setNum(26);
+		System.out.println(m1.getNum());
+		System.out.println(m1);
+
+	}
+
+}

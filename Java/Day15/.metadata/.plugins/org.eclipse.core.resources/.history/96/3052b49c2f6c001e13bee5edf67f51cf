@@ -1,0 +1,24 @@
+package q1;
+interface Emp
+{
+	void show();
+}
+class MyClass
+{
+	MyClass()
+	{
+		System.out.println("MyClass default constructor");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Sixth ref = Sample::fun1;
+		ref.disp5();
+
+
+	}
+
+}

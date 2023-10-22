@@ -1,0 +1,312 @@
+1)accept 10 characters from a user ( use Scanner).
+store these 10 characters in a file. (FileWriter)
+Now open a file and read all these characters.
+
+2) using RandomAccessFile class create a file.
+accept a message from user and write in a file.
+now read the message which u have stored in a file.
+now again accept a message and write in a file at the end of existing message.
+now read the entire content of file . ( u should be able to read both the messages now)
+
+3) write a file copy program using byte streams.
+( FileOutputStream and FileInputStream )
+
+4) Write a file copy program using unicode character streams.
+( FileWriter and FileReader )
+
+5) accept as many as numbers from user till he presses "0"  and write these numbers in a file. Now Open a file and read these numbers. ( Hint :- use Scanner class for input, FileOutputStream, DataOutputStream, FileInputStream , DataInputStream)
+
+
+FileInputStream fis=new FileInputStream("d:\\abc.txt");
+DataInputStream dis=new DataInputStream(fis);
+
+while(dis.available()!=0)
+{
+	S.o.p(dis.readInt());
+}
+
+Answers:
+//q1
+package q1;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		char ch []= new char[3];
+		System.out.println("enter character");
+		for(int i=0;i<ch.length;i++)
+		{
+			ch[i] = sc.next().charAt(0);
+		}
+		
+		try(FileWriter fw = new FileWriter("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q1.txt"))
+		{
+			for(int i=0;i<ch.length;i++)
+			{
+				fw.write(ch[i]);
+			}
+			System.out.println("Characters are written in file");
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		try(FileReader fr= new FileReader("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q1.txt"))
+		{
+			ch= new char[(int)new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q1.txt").length()];
+			
+			for(int i=0;i<ch.length;i++)
+			{
+				System.out.println(ch[i]);
+			}
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
+
+//q2
+package q1;
+
+import java.io.*;
+
+public class q2 
+{
+
+	public static void main(String[] args) 
+	{
+		try(RandomAccessFile raf = new RandomAccessFile("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q2.txt","rw"))
+		{
+			raf.seek(raf.length());
+			System.out.println("enter data");
+			byte b[] = new byte[200];
+			int k = System.in.read(b);
+			raf.write(b,0,k);
+			
+			raf.seek(0);
+			byte c[]= new byte[(int)raf.length()];
+			raf.read(c);
+			String s = new String(c);
+			System.out.println(s);
+			
+			raf.seek(raf.length());
+			System.out.println("enter again");
+			k = System.in.read(b);
+			raf.write(b,0,k);
+			
+			System.out.println("all data");
+			raf.seek(0);
+			c = new byte[(int)raf.length()];
+			raf.read(c);
+			s = new String(c);
+			System.out.println(s);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}
+//q3
+package q1;
+
+import java.io.*;
+
+public class q3 
+{
+
+	public static void main(String[] args)
+	{
+		File f = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q3old.txt");
+		
+		if(!f.exists())
+		{
+			System.out.println("file not exist");
+			System.exit(0);
+		}
+		else if(f.exists())
+		{
+			try(FileOutputStream fos = new FileOutputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q3old.txt",true))
+			{
+				byte b[] = new byte[100];
+				System.out.println("enter data");
+				int k = System.in.read(b);
+				fos.write(b);
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+		}
+
+	}
+
+}
+package q1;
+
+import java.io.*;
+
+public class q3CopiedFile
+{
+
+	public static void main(String[] args)
+	{
+		File f = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q3old.txt");
+		File f2 = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q3new.txt");
+		
+		if(!f.exists())
+		{
+			System.out.println("file not exist");
+			System.exit(0);
+		}
+		else if(f.exists())
+		{
+			
+			try(FileInputStream fis = new FileInputStream(f))
+			{
+				byte b[] = new byte[(int)f.length()];
+				int k = fis.read(b);
+				FileOutputStream fos = new FileOutputStream(f2);
+				fos.write(b,0,k);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}
+//q4
+package q1;
+
+import java.io.*;
+
+public class q4 
+{
+	public static void main(String ...args)
+	{
+		File f = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q4old.txt");
+		if(!f.exists())
+		{
+			System.out.println("file not there");
+			System.exit(0);
+		}
+		try(FileWriter fw = new FileWriter(f))
+		{
+			char []ch = {'t','r','i','p','t','i'};
+			fw.write(ch);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}
+package q1;
+
+import java.io.*;
+import java.util.Arrays;
+
+public class q4CopiedFile 
+{
+
+	public static void main(String[] args) 
+	{
+		File f = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q4new.txt");
+		File f2 = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q4old.txt");
+		try(FileReader fr = new FileReader(f2))
+		{
+			char []ch = new char[(int)f2.length()];
+			int k = fr.read(ch);
+			fr.read(ch,0,k);
+			try(FileWriter fw = new FileWriter(f))
+			{
+				System.out.println(Arrays.toString(ch));
+				fw.write(ch);
+			}
+		}
+		
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
+
+//q5
+package q1;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class q5 
+{
+
+	public static void main(String[] args) 
+	{
+		File f = new File("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day12/q5.txt");
+		try(FileOutputStream fos = new FileOutputStream(f,true))
+		{
+			try(DataOutputStream dos = new DataOutputStream(fos))
+			{
+				Scanner sc = new Scanner(System.in);
+				int i=1;
+				int k;
+				do
+				{
+					System.out.println("enter number");
+					k=sc.nextInt();
+					dos.writeInt(k);
+				}
+				while(k!=0);
+				
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		try(FileInputStream fis = new FileInputStream(f))
+		{
+			try(DataInputStream dis = new DataInputStream(fis))
+			{
+				while(dis.available()!=0)
+				{
+					System.out.println(dis.readInt());
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}
+
+

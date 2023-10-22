@@ -1,0 +1,45 @@
+//1
+package assigmnet;
+import java.util.Scanner;
+class Shape
+{
+	private int width;
+	private int height;
+	
+	public void setWidth(int width)
+	{
+		this.width=width;
+	}
+	public int getWidth()
+	{
+		return width;
+	}
+	
+	public void setHeight(int height)
+	{
+		this.height=height;
+	}
+	public int getHeight()
+	{
+		return height;
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		Shape s = new Shape();
+		System.out.println("enter width");
+		int width=sc.nextInt();
+		System.out.println("enter height");
+		int height=sc.nextInt();
+		System.out.println("width is "+width);
+		System.out.println("width is "+height);
+		
+		
+
+	}
+
+}

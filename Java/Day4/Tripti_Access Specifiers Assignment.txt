@@ -1,0 +1,144 @@
+pack1
+	public class Base
+		private fun1
+		fun2
+		protected fun3
+		public fun4
+
+
+	public class Sub1 extends Base
+		public void disp1()
+		{
+			fun1() // no
+			fun2() // yes
+			fun3() // yes
+			fun4() // yes
+		}
+
+pack2
+	public class Sub2 extends Base
+	{
+		public void disp2()
+		{
+			fun1() // no
+			fun2() // no
+			fun3() // yes
+			fun4() // yes
+		}
+	}
+
+	public class OtherClass
+	{
+		public void disp3()
+		{
+			fun1()/fun2()/fun3() // no
+			Base b=new Base();
+			b.fun4();
+		}
+	}
+
+
+public class Demo [ outside any package ]
+	main
+		create objects of Sub1,Sub2 and OtherClass and invoke disp1,disp2 and disp3
+
+Code:
+Base.java
+package pack1;
+
+public class Base 
+{
+	private void fun1()
+	{
+		System.out.print("Fun1");
+	}
+	
+	void fun2()
+	{
+		System.out.print("Fun2");
+	}
+	
+	protected void fun3()
+	{
+		System.out.print("Fun3");
+	}
+	
+	public void fun4()
+	{
+		System.out.print("Fun4");
+	}
+
+}
+Sub1.java
+package pack1;
+
+public class Sub1 extends Base
+{
+	public void disp1()
+	{
+		//fun1();not accessible bcoz it is private and we are not calling in same class
+		fun2();
+		fun3();
+		fun4();
+	}
+}
+Sub2.java
+package pack2;
+
+import pack1.Base;
+
+public class Sub2 extends Base
+{
+	public void disp2()
+	{		
+		//fun1();not accessible bcoz it is private and we are not calling in same class
+		//fun2(); not accessible bcoz we are not calling in same pacakage
+		fun3();
+		fun4();
+	}
+
+}
+otherClass.java
+package pack2;
+
+import pack1.Base;
+
+public class otherClass 
+{
+	public void disp3()
+	{
+		//fun1();not accessible bcoz it is private and we are not calling in same class
+		//fun2(); not accessible bcoz we are not calling in same pacakage
+		//fun3();not accessible bcoz it is not a child class
+		Base b = new Base();
+		b.fun4();
+	}
+
+}
+Demo.java
+package demoMain;
+
+import pack1.Sub1;
+
+import pack2.Sub2;
+import pack2.otherClass;
+
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		Sub1 s1 = new Sub1();
+		s1.disp1();
+		
+		
+		Sub2 s2 = new Sub2();
+		s2.disp2();
+		
+		otherClass oc = new otherClass();
+		oc.disp3();
+
+	}
+
+}
+

@@ -1,0 +1,41 @@
+package q1;
+
+import java.util.concurrent.*;
+import java.util.concurrent.locks.*;
+
+public class q4 implements Runnable
+{
+	ReentrantLock r = new ReentrantLock();
+	public void run()
+	{
+		r.lock();
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(i+" "+Thread.currentThread().getName());
+			if(i==5)
+			{
+				try 
+				{
+					Condition.await();
+				} 
+				catch (InterruptedException e) 
+				{
+					
+					e.printStackTrace();
+				}
+			}
+			Condition.signalAll();
+		}
+		r.unlock();
+		
+	}
+	public static void main(String[] args) 
+	{
+		q4 ob = new q4();
+		ExecutorService e = Executors.newFixedThreadPool(2);
+		e.execute(ob);
+		e.execute(ob);
+		e.shutdown();
+	}
+
+}

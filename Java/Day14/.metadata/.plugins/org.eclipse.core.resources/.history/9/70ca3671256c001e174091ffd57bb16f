@@ -1,0 +1,13 @@
+package q1;
+interface Calculator
+{
+	int multiply(int a,int b);
+}
+public class CalcDemo 
+{
+	public static void main(String[] args)
+	{
+		Calculator ref = (int a, int b)->{return a*b;};
+	}
+
+}

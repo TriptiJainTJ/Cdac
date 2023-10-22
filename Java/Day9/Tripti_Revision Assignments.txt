@@ -1,0 +1,475 @@
+Revision_1) 
+Define a class “MyClass”. Define a class “Everything” and define a member function with variable no. of argument inside it. Define  a class Demo1  and define main function in it. From main function , call the function of class Everything and make sure you can pass any arguments , it will take and display. It should even take instance of “MyClass” and display.
+
+Revision_2)
+Define a class Sample with member variable “char ch” and a parameterized constructor. Create some instances(at least 2) of this class by passing any alphabet.  Now achieve following tasks:
+
+a) when you print the reference it should be display the character which was passed during instantiation.
+b) if two instances have same character or an alphabet, their "equals()" should return true and obviously "hashCode()" also should be same.
+
+
+Revision_3) 
+create 4 classes A,B,C,D with member functions Afun(),Bfun(),Cfun() and Dfun() respectively.
+now define "Demo" class with main function. Inside main function create array of Object class which will store instances of above mentioned classes. Traverse through this array and call "Cfun()" of class C only.
+
+Revision_4) 
+create a parent class "Artist" with a member function "void perform()".
+now derive following child classes from "Artist"
+	Actor,Singer and Musician and override "perform" in these classes to write the specific task.
+inside "Actor" class define one more method
+	void changeGateUp()
+	{
+		S.o.p("as per the role demands");
+	}
+
+now create a Demo class with main function.
+inside main function create array of "Artist" with size 3.
+store instances of the above child classes in it.
+Now traverse through the array and invoke "perform" of each child class. In addition to this wherever "Actor" object is there inside the array , also perform "changeGateUp()" method.
+
+Revision_5) 
+	it's a Developer- Client example
+on a Developer side:
+
+create a checked exception "VotingNotAllowedException".
+
+define a class "Person" with a instance member "private String name" and "private int age"
+define parameterized constructor and toString() method also.
+In the parameterized constructor check the age passed while instantiating the class. if the age is less than 18 , constructor should raise "VotingNotAllowedException"
+	[ it should not handle the exception]
+
+	create jar file and documentation 
+
+
+on Client side:
+
+Define a class "Demo" with main function.
+From main function create an object of "Person" and display that object.
+
+Revision_6)
+write a program to display the method names inside the class which is passed as a command line argument.
+
+Revision_7)
+on the developer side create 4 classes [ First,Second,Third and Fourth] with only "toString()" method which should return the respective class name.
+
+create necessary jar file and documentation
+
+
+on the client side
+	create a class "Demo" with main function and 
+	static Object returnObject(String name)  method. 
+
+this "returnObject()" method should 
+	create the object of the given inside "name" parameter using Reflection API and return it.
+
+from the main function invoke "returnObject()" by passing name of either "First" or "Second" or "Third" or "Fourth" only. Then main function should collect the object given by "returnObject()" method and display it.
+
+Answers:
+//q1
+package q1;
+
+public class MyClass 
+{
+	
+}
+package q1;
+
+public class Everything
+{
+	
+	public void fun(Object ...args)
+	{
+		for(int i=0;i<args.length;i++)
+		{
+			System.out.println(args[i]);
+		}
+	}
+
+}
+package q1;
+
+public class Demo1 
+{
+
+	public static void main(String[] args) 
+	{
+		MyClass m = new MyClass();
+		Everything e = new Everything();
+		e.fun(m, "Tripti", 26);
+
+	}
+
+}
+//q2
+package q2;
+
+public class Sample 
+{
+	private char ch;
+	
+	public Sample(char ch)
+	{
+		this.ch=ch;	
+	}
+	
+	public char getCh()
+	{
+		return ch;
+	}
+	
+	public String toString()
+	{
+		return "["+ch+"]";
+	}
+	
+	public boolean equals(Object ref)
+	{
+		return ch == ((Sample)ref).ch;
+	}
+	
+	
+	public int hashCode()
+	{
+		return ch;
+		//return (int)ch1;
+	}
+	
+	public static void main(String ...args)
+	{
+		Sample s = new Sample('A');
+		Sample s2 = new Sample('T');
+		
+		System.out.println("Sample first's input is "+s);
+		System.out.println("Sample first's input is "+s2);
+		
+		if(s.equals(s2))
+		{
+			System.out.println("s and s2 are eqaul");
+		}
+		else
+			System.out.println("s and s2 are not eqaul");
+		
+		System.out.println("hashcode of s is"+ s.hashCode());
+		System.out.println("hashcode of s2 is"+ s2.hashCode());
+	}
+
+}
+
+//q3
+package q3;
+
+public class A 
+{
+	public void Afun()
+	{
+		System.out.println("A's fun");
+	}
+
+}
+package q3;
+
+public class B
+{
+	public void Bfun()
+	{
+		System.out.println("B's fun");
+	}
+
+}
+package q3;
+
+public class C
+{
+	public void Cfun()
+	{
+		System.out.println("C's fun");
+	}
+
+}
+package q3;
+
+public class D
+{
+	public void Dfun()
+	{
+		System.out.println("D's fun");
+	}
+
+}
+package q3;
+
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		Object arr[]=new Object[4];
+		arr[0] = new A();
+		arr[1] = new B();
+		arr[2] = new C();
+		arr[3] = new D();
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i] instanceof C)
+			{
+				//C ref = (C)arr[i];
+				//ref.cfun();
+				((C)arr[i]).Cfun();
+			}
+		}
+
+	}
+
+}
+//q4
+package q4;
+
+public class Artist 
+{
+	public void perform()
+	{
+		System.out.println("Artist is performing");
+	}
+
+}
+package q4;
+
+public class Actor extends Artist
+{
+	public void perform()
+	{
+		System.out.println("Actor is giving audition of acting");
+	}
+	public void changeGateUp()
+	{
+		System.out.println("Actor is changing gateup as per the role demands");
+	}
+
+}
+package q4;
+
+public class Singer extends Artist
+{
+	public void perform()
+	{
+		System.out.println("Singer is giving audition of Singing");
+	}
+
+}
+
+package q4;
+
+public class Musician  extends Artist
+{
+	public void perform()
+	{
+		System.out.println("Musician is performing");
+	}
+
+}
+
+package q4;
+
+public class Demo 
+{
+	public static void main(String[] args) 
+	{
+		Artist arr[] = new Artist[3];
+		arr[0] = new Actor();
+		arr[1]= new Singer();
+		arr[2] =new Musician();
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].perform();
+			if(arr[i] instanceof Actor)
+			{
+				((Actor)arr[i]).changeGateUp();
+			}
+
+		}
+
+	}
+
+}
+//q5
+package devpro;
+
+public class Person 
+{
+	private String name;
+	private int age;
+	
+	public Person(String name, int age) throws VotingNotAllowedException
+	{
+		this.name = name;
+		this.age=age;
+		if (age<18)
+		{
+			System.out.println("VotingNotAllowedException");
+		}
+	}
+	
+	public String toString()
+	{
+		return "["+name+"]"+"["+age+"]";
+	}
+}
+package devpro;
+
+public class VotingNotAllowedException extends Exception
+{
+	public VotingNotAllowedException(String msg)
+	{
+		super(msg);
+	}
+}
+package clientpro;
+
+import devpro.Person;
+import devpro.VotingNotAllowedException;
+
+public class Demo {
+
+	public static void main(String[] args) throws VotingNotAllowedException 
+	{
+		Person p= new Person("Tripti", 17);
+		System.out.println(p);
+	}
+
+}
+
+//q6
+package q6;
+import java.lang.reflect.Method;
+public class q6 
+{
+	public static void main(String[] args) 
+	{
+		Class c = null;
+		try
+		{
+			c= Class.forName(args[0]);
+		}
+		catch(ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		Method arr[]= c.getDeclaredMethods();
+		for(int i=0;i<arr.length;i++)
+		{
+			System.out.println(arr[i]);
+		}
+	}
+
+}
+
+//q7
+package devpro;
+
+public class First 
+{
+	public String toString()
+	{
+		return "["+"First"+"]";
+	}
+
+}
+package devpro;
+
+public class Second
+{
+	public String toString()
+	{
+		return "["+"Second"+"]";
+	}
+
+}
+package devpro;
+
+public class Fourth
+{
+	public String toString()
+	{
+		return "["+"Fourth"+"]";
+	}
+
+}
+package devpro;
+
+public class Third
+{
+	public String toString()
+	{
+		return "["+"Third"+"]";
+	}
+
+}
+package clientpro;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Scanner;
+
+
+import devpro.First;
+import devpro.Fourth;
+import devpro.Second;
+import devpro.Third;
+
+public class Demo 
+{
+	public static Object returnObject(String name) throws IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException
+	{
+		Object o = null;
+		try
+		{
+			Class c = Class.forName(name);
+			o = c.getDeclaredConstructor().newInstance();
+		}
+		catch(InstantiationException e)
+		{
+			e.printStackTrace();
+		}
+		catch(IllegalAccessException e)
+		{
+			e.printStackTrace();
+		}
+		catch(ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return o;
+	}
+
+	public static void main(String[] args) throws IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException 
+	{
+		
+		Scanner sc= new Scanner(System.in);
+		System.out.println("enter classname");
+		String s = sc.next();
+		
+		Object ob = returnObject(s);
+		if(ob instanceof First)
+		{
+			((First)(ob)).toString();
+		}
+		else if(ob instanceof Second)
+		{
+			((Second)(ob)).toString();
+		}
+		else if(ob instanceof Third)
+		{
+			((Third)(ob)).toString();
+		}
+		else if(ob instanceof Fourth)
+		{
+			((Fourth)(ob)).toString();
+		}
+		
+		System.out.println(ob+" class is instantiated ");
+
+	}
+
+}		

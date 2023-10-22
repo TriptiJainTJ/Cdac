@@ -1,0 +1,431 @@
+1) define a functional interface "First" with an abstract method "void disp1()".
+define a class "Second" with a method "void fun1()"
+
+inside main function create a method reference for "First" and invoke "fun1" of "Second"
+
+
+interface First
+{
+	void disp1();
+}
+
+class Second
+{
+	void fun1()
+	{
+		code
+	}
+}
+
+class Demo
+	main
+		Second s=new Second();
+		First ref=s::fun1;
+		ref.disp1();
+
+
+
+2) define a functional interface "Third" with an abstract method "void show(int num)".
+define a class "Sample" with a method "void disp(int num)"
+
+inside main function create a method reference for "Third" and invoke "disp" of "Sample" by passing a value "500".
+
+
+interface Third
+{
+	void show(int num);
+}
+
+class Sample
+{
+	void disp(int num);
+}
+
+class Demo
+	main
+		Sample s=new Sample();
+		Third ref=s::disp;
+		ref.show(500);
+
+
+
+
+
+
+3) define a functional interface "Fifth" with an abstract method "int add(int a,int b)"
+define a class Math1 with a method "int calc(int a,int b)" 
+
+inside main function invoke "calc" method with the help of
+	a) lamdba expression
+	b) method reference
+
+
+
+interface Fifth
+{
+	int add(int a,int b);
+}
+
+class Math1
+{
+	int calc(int a,int b);
+}
+
+class Demo
+	main
+		Math1 m=new Math1();
+		
+		Fifth ref1=(a,b)->{ return m.calc(a,b); };
+		S.o.p(ref1.add(10,30));
+
+
+		Fifth ref2=m::calc;
+		S.o.p(ref2.add(10,30)); 
+
+
+
+
+4) define a functional interface "Sixth" with an abstract method "void disp5()".
+define a class "Sample" with a static method "void fun1()"
+
+inside main function create a method reference for "Sixth" and invoke "fun1" of "Sample"
+
+
+
+interface Sixth
+{
+	void disp5();
+}
+
+class Sample
+{
+	static void fun1()
+	{
+		code
+	}
+}
+
+class Demo
+	main	
+		Sixth ref=Sample::fun1;
+		ref.disp5();
+
+
+
+5) define a functional interface "Emp" with an abstract method "void show()".
+define a class "MyClass" with default constructor with the message "inside default constructor of MyClass".
+
+inside main function instantiate "MyClass" using method reference to "Emp"
+
+
+interface Emp
+{
+	void show();
+}
+
+class MyClass
+{
+	public MyClass()
+	{
+		S.o.p("inside default constructor of MyClass");
+	}
+}
+
+class Demo
+	main
+		Emp ref=MyClass::new;
+		ref.show();
+
+
+
+
+6) define a functional interface "Seventh" with an abstract method "void fun(int k)".
+define a class "Sample" with parameterized constructor with the message "inside parameterized constructor of Sample\t"+k .
+
+inside main function instantiate "Sample" by passing value "200" using method reference to "Seventh"
+
+
+interface Seventh
+{
+	void fun(int k);
+}
+
+class Sample
+{
+	public Sample(int k)
+	{
+		S.o.p("inside parameterized constructor of Sample\t"+k );
+	}
+}
+
+class Demo
+	main
+		Seventh ref=Sample::new;
+		ref.fun(200);
+
+
+
+
+
+7) define a class "Student" with name and age as member variables, parameterized constructor , setters , getters and "toString" method. 
+
+define a functional interface "MyInterface" with an abstract method "void show(Student ref)"
+
+inside main function 
+a) create an instance of "Student" class by passing "Vijay" and '20' values.
+
+b) create method reference for "MyInterface" and display the instance of "Student" class created above.
+
+
+
+class Student
+{
+	String name;
+	int age;
+
+	Student - parameterized constr
+		setters and getters
+		toString
+}
+
+
+interface MyInterface
+{
+	void show(Student ref)
+}
+
+class Demo
+	main
+		Student s1=new Student("Vijay",20);
+		MyInterface m=System.out::println;
+		m.show(s1);
+
+Answers:
+//q1
+package q1;
+interface First
+{
+	void disp1();
+}
+class Secind
+{
+	void fun1()
+	{
+		System.out.println("fun1");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Secind s = new Secind();
+		First ref = s::fun1;
+		ref.disp1();
+		
+		//lambda
+//		First ref = ()->{s.fun1();};
+//		ref.disp1();
+
+	}
+
+}
+
+//q2
+package q1;
+interface Third
+{
+	void show(int num);
+}
+class Sample
+{
+	void disp(int num)
+	{
+		System.out.println("Num is "+num);
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Sample s = new Sample();
+		Third ref = s::disp;
+		ref.show(8);
+		
+		//lambda
+//		Third ref = (n)->{ s.disp(n);};
+//		ref.show(8);
+
+	}
+
+}
+
+//q3
+package q1;
+interface Fifth
+{
+	int add(int a,int b);
+}
+class Math1
+{
+	int calc(int a,int b)
+	{
+		System.out.println("a is "+a);
+		System.out.println("b is "+b);
+		return a+b;
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Math1 m = new Math1();
+		Fifth ref = m::calc;
+		System.out.println("addition of a and b is "+ref.add(8,26));
+	
+		System.out.println("by lambda");
+		Fifth ref2 = (a,b)->{return m.calc(a, b);};
+		System.out.println("addition of a and b is "+ref2.add(1, 1));
+
+
+	}
+
+}
+
+//q4
+package q1;
+interface Sixth
+{
+	void disp5();
+}
+class Sample
+{
+	static void fun1()
+	{
+		System.out.println("fun1");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Sixth ref = Sample::fun1;
+		ref.disp5();
+		//lambda
+//		Sixth ref =()->{Sample.fun1();};
+//		ref.disp5();
+
+	}
+
+}
+
+//q5
+package q1;
+interface Emp
+{
+	void show();
+}
+class MyClass
+{
+	MyClass()
+	{
+		System.out.println("inside default constructor of MyClass");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Emp ref = MyClass :: new  ;
+		ref.show();
+		
+		//lambda
+//		Emp ref = ()->{new MyClass();};
+//		ref.show();
+
+	}
+
+}
+//q6
+package q1;
+interface Seventh
+{
+	void fun(int k);
+}
+class Sample
+{
+	Sample(int k)
+	{
+		System.out.println("inside parameterized constructor of Sample "+k);
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Seventh ref = Sample::new;
+		ref.fun(200);
+		
+//		//lamda
+//		Seventh ref =(k)->{new Sample(k);};
+//		ref.fun(200);
+	}
+
+}
+//q7
+package q1;
+interface MyInterface
+{
+	void show(Student ref);
+}
+class Student
+{
+	private String name;
+	private int age;
+	
+	Student(String name, int age)
+	{
+		this.name = name;
+		this.age = age;
+		System.out.println("inside parameterized constructor");
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+	public int getAge()
+	{
+		return age;
+	}
+	public String toString()
+	{
+		return "[ name is "+name+" and age is [age "+age+" ]";
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Student s = new Student("Vijay", 20);
+		MyInterface ref = System.out::println; 
+		ref.show(s);
+		
+	}
+
+}
+
+	

@@ -1,0 +1,88 @@
+public interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+public interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+}
+public class GUIDemo
+{
+	main()
+	{
+		create the object of WindowGUIApp and invoke all the methods
+	}
+}
+
+code:
+MouseHandler.java
+public interface MouseHandler 
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+
+}
+
+WindowHandler.java
+public interface WindowHandler 
+{
+	void windowClosing();
+	void windowClosed();
+
+}
+
+WindowGUIApp.java
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+	public void mouseClicked()
+	{
+		System.out.println("Mouse is clicked");
+	}
+	public void mousePressed()
+	{
+		System.out.println("Mouse is pressed");
+	}
+	public void mouseReleased()
+	{
+		System.out.println("Mouse is releaased");
+	}
+	
+	public void windowClosing()
+	{
+		System.out.println("Window is closing");
+	}
+	public void windowClosed()
+	{
+		System.out.println("Window is closed");
+	}
+}
+
+GUIDemo.java
+public class GUIDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		WindowGUIApp w = new WindowGUIApp();
+		w.mouseClicked();
+		w.mousePressed();
+		w.mouseReleased();
+		w.windowClosing();
+		w.windowClosed();
+	}
+
+}
+
+
+
+
+
+

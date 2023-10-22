@@ -1,0 +1,27 @@
+package arrayListAssignmnt2;
+
+class Employee
+{
+	private int empid;
+	private String name, designation;
+	private double salary;
+	
+	Employee(int empid, String name, String designation, double salary)
+	{
+		this.empid = empid;
+		this.name = name;
+		this.designation = designation;
+		this.salary = salary;
+	}
+}
+
+public class EmployeeDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="devpack.Shape"/>
+    <fullyQualifiedTypeName name="devpack.Triangle"/>
+    <fullyQualifiedTypeName name="devpack.Circle"/>
+    <fullyQualifiedTypeName name="devpack.Rect"/>
+    <fullyQualifiedTypeName name="devpack.PersistenceMechanism"/>
+</qualifiedTypeNameHistroy>

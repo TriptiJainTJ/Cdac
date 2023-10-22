@@ -1,0 +1,102 @@
+Interface Course
+{
+	void start();
+	void stop();
+}
+now define 3 implementations: 
+	DACDBDACourse,MSCit and Basic
+
+inside "DACDBDACourse" class define one more method "public void orientation()"
+
+define one more class "CourseDemo" with main function and "public static void show()" method.
+from main function
+	invoke "show()" method by passing object of any implementations and invoke "start()" and "stop()" methods. Also invoke "orientation()" method whenever object of "DACDBDACourse" is passed.
+
+Code;
+
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		
+		CourseDemo c = new CourseDemo();
+		c.perform(new DACDBDACourse());
+		c.perform(new MSCit());
+		c.perform(new Basic());
+
+	}
+}
+
+
+public class CourseDemo 
+{
+	public static void perform(Course ref)
+	{
+		ref.start();
+		if(ref instanceof DACDBDACourse)
+		{
+			DACDBDACourse temp = (DACDBDACourse)ref;
+			temp.orientation();
+		}
+		ref.stop();
+	}
+
+	
+
+}
+
+
+public class MSCit  extends Course
+{
+	public void start()
+	{
+		System.out.println("MSCit Course is started");
+	}
+	public void stop()
+	{
+		System.out.println("MSCit Course is stoped");
+	}
+}
+
+public class DACDBDACourse extends Course
+{
+	public void start()
+	{
+		System.out.println("DAC and DBDA Course is started");
+	}
+	public void stop()
+	{
+		System.out.println("DAC and DBDA Course is stoped");
+	}
+	
+	public void orientation()
+	{
+		System.out.println("orientation of DAC and DBDA Course");
+	}
+}
+
+public class Basic  extends Course
+{
+	public void start()
+	{
+		System.out.println("Basic Course is started");
+	}
+	public void stop()
+	{
+		System.out.println("Basic Course is stoped");
+	}
+}
+
+
+public class Course 
+{
+	public void start()
+	{
+		System.out.println("Course is started");
+	}
+	public void stop()
+	{
+		System.out.println("Course is stoped");
+	}
+
+}

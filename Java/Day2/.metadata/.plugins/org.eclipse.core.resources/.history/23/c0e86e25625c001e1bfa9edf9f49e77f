@@ -1,0 +1,32 @@
+//5
+package assigmnet;
+class A
+{
+	private int num1;
+	private static int num2=26;
+	
+	public void setNum1(int num1)
+	{
+		this.num1=num1;
+	}
+	public int getNum1()
+	{
+		return num1;
+	}
+	
+	public static int getNum2()
+	{
+		return num2;
+	}
+}
+public class q5
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.setNum1(8);
+		System.out.println("num1 is "+ a.getNum1());
+		System.out.println("num2 is "+ A.getNum2());
+	}
+
+}

@@ -1,0 +1,75 @@
+package arraylistAssignmnt;
+
+import java.io.*;
+import java.util.*;
+
+class MyNum implements Serializable
+{
+	private int num;
+	MyNum(int num)
+	{
+		this.num = num;
+	}
+	public int getNum()
+	{
+		return num;
+	}
+	public String toString()
+	{
+		return "num [num = "+ num+"]";
+	}
+}
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		MyNum m = new MyNum(26);
+		MyNum m2 = new MyNum(8);
+		MyNum m3= new MyNum(97);
+		MyNum m4 = new MyNum(95);
+		
+		List<MyNum> myList = new ArrayList<MyNum>();
+		myList.add(m);
+		myList.add(m2);
+		myList.add(m3);
+		myList.add(m4);
+		
+		try(FileOutputStream fos = new FileOutputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/arraylist.txt"))
+				{
+					try(ObjectOutputStream oos = new ObjectOutputStream(fos))
+					{
+						oos.writeObject(myList);
+					}
+					System.out.println("arraylist is stored and serialized");
+				}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+
+		try(FileInputStream fis = new FileInputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/arraylist.txt"))
+		{
+				try(ObjectInputStream ois = new ObjectInputStream(fis))
+				{
+					ArrayList<MyNum> readList = (ArrayList<MyNum>) ois.readObject();
+				
+				System.out.println("Reading arraylist");
+				
+				Iterator<MyNum> itr = readList.iterator();
+				while(itr.hasNext())
+				{
+					MyNum num = itr.next();
+					System.out.println("num is "+num.getNum());
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+}

@@ -1,0 +1,18 @@
+package q1;
+interface Second
+{
+	void disp4();
+}
+public class Demo 
+{
+
+	public static void main(String[] args)
+	{
+		Second ref1 = ()->{System.out.println("disp4 by lambada");};
+		ref1.disp4();
+		Second ref2 = ()->{System.out.println("disp4 by another lambada");};
+		ref2.disp4();
+
+	}
+
+}

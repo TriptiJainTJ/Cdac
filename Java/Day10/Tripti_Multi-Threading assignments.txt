@@ -1,0 +1,197 @@
+1) create a multi-threaded application by using  "extends Thread " method.create 2 threads. they should display characters from A to J.
+
+2) above program  using "implements Runnable" method.
+
+3) create 3 threads in such a way that while one thread is executing, 2 threads cannot interfere. they should display output "Exec  0" to "Exec 5".
+
+4)create 2 threads. Write a program which displays number 1 to 10 using class lock. 
+[hint:- use "implements Runnable" and synchronized block]
+
+5) create 2 threads
+	one thread will display 1 to 50
+	second thread will display 50 to 1
+both the threads should start simultaneously.
+
+(use implements method)
+
+
+
+
+Answers:
+//q1
+package q1;
+class MyThread extends Thread
+{
+	private char ch;
+	
+	public MyThread(char ch)
+	{
+		this.ch=ch;
+	}
+	
+	public void run()
+	{
+		System.out.println(Thread.currentThread().getName());
+		for(char c=ch;c<='J';c++)
+		{
+			System.out.println(c+" "+Thread.currentThread().getName());
+			try
+			{
+				Thread.sleep(50);
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+}
+public class q1
+{
+	
+	public static void main(String[] args) 
+	{
+		System.out.println(Thread.currentThread().getName());
+		MyThread t1 = new MyThread('A');
+		t1.setName("t1 thread");
+		MyThread t2 = new MyThread('A');
+		t2.setName("t2 thread");
+		t1.start();
+		t2.start();
+
+	}
+
+}
+
+//q2
+package q1;
+
+public class q2 implements Runnable
+{
+	synchronized public void run()
+	{
+		
+		for(char ch='A';ch<='J';ch++)
+		{
+			System.out.println(ch+" "+Thread.currentThread().getName());
+		}
+	}
+
+	public static void main(String[] args) 
+	{
+		System.out.println(Thread.currentThread().getName());
+		q2 ob = new q2();
+		Thread t1 = new Thread(ob);
+		Thread t2 = new Thread(ob);
+		t1.setName("first");
+		t2.setName("second");
+		t1.start();
+		t2.start();
+	}
+
+}
+
+
+
+//q3
+package q1;
+
+public class q3 implements Runnable
+{
+	public synchronized void run()
+	{
+		for(int i=0;i<=5;i++)
+		{
+			System.out.println("Execution "+i+Thread.currentThread().getName());
+		}
+	}
+
+	public static void main(String[] args) 
+	{
+		q3 ob = new q3();
+		Thread t1 = new Thread(ob);
+		t1.setName(" first");
+		Thread t2 = new Thread(ob);
+		t2.setName(" second");
+		Thread t3 = new Thread(ob);
+		t3.setName(" third");
+		t1.start();
+		t2.start();
+		t3.start();
+
+	}
+
+}
+
+//q4
+package q1;
+
+public class q4 implements Runnable
+{
+	static void disp()
+	{
+		synchronized(q4.class)
+		{
+			for(int i=1;i<=10;i++)
+			{
+				System.out.println(i+Thread.currentThread().getName());
+			}
+		}
+	}
+	public void run()
+	{
+		disp();
+		
+	}
+
+	public static void main(String[] args) 
+	{
+		q4 ob = new q4();
+		Thread t1 = new Thread(ob);
+		t1.setName(" first");
+		Thread t2 = new Thread(ob);
+		t2.setName(" second");
+		
+		t1.start();
+		t2.start();
+		
+	}
+
+}
+//q5
+package q1;
+
+public class q5 implements Runnable
+{
+	public synchronized void run()
+	{
+		if(Thread.currentThread().getName().equalsIgnoreCase("first"))
+		{
+			for(int i=1;i<=50;i++)
+			{
+				System.out.println(i);
+			}
+		}
+		else if(Thread.currentThread().getName().equalsIgnoreCase("second"))
+		{
+			for(int i=50;i>=1;i--)
+			{
+				System.out.println(i);
+			}
+		}
+	}
+
+	public static void main(String[] args) 
+	{
+		q5 ob = new q5();
+		Thread t1 = new Thread(ob);
+		t1.setName("first");
+		Thread t2 = new Thread(ob);
+		t2.setName("second");
+		
+		t1.start();
+		t2.start();
+
+	}
+
+}

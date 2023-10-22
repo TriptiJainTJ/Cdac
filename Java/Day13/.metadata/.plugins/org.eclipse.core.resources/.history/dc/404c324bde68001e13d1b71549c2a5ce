@@ -1,0 +1,27 @@
+package arraylistAssignmnt;
+
+class MyNum
+{
+	private int num;
+	MyNum(int nun)
+	{
+		this.num = num;
+	}
+	public int getNum()
+	{
+		return num;
+	}
+}
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		MyNum m = new MyNum(26);
+		MyNum m2 = new MyNum(8);
+		MyNum m3= new MyNum(97);
+		MyNum m4 = new MyNum(95);
+
+	}
+
+}

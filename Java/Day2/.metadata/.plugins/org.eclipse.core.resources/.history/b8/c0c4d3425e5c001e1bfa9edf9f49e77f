@@ -1,0 +1,15 @@
+//4
+package assigmnet;
+class DemoOb
+{
+	
+}
+public class q4
+{
+	public static void main(String[] args) 
+	{
+		DemoOb d = new DemoOb();
+		DemoOb ref = d;
+	}
+
+}

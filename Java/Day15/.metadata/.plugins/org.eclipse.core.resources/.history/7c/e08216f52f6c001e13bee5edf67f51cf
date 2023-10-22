@@ -1,0 +1,27 @@
+package q1;
+interface Emp
+{
+	void show();
+}
+class MyClass
+{
+	MyClass()
+	{
+		System.out.println("inside default constructor of MyClass");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Emp ref = MyClass :: new  ;
+		ref.show();
+		
+		//lambda
+		Emp ref = ()->{new MyClass;};
+		ref.show();
+
+	}
+
+}

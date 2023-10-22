@@ -1,0 +1,15 @@
+//3
+package assigmnet;
+class Emp
+{
+	private static int cnt=26;
+}
+public class q3
+{
+
+	public static void main(String[] args) 
+	{
+		
+	}
+
+}

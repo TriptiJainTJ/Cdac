@@ -1,0 +1,35 @@
+package arraylistAssignmnt;
+
+import java.io.*;
+import java.util.*;
+
+class MyNum implements Serializable
+{
+	private int num;
+	MyNum(int nun)
+	{
+		this.num = num;
+	}
+	public int getNum()
+	{
+		return num;
+	}
+}
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		MyNum m = new MyNum(26);
+		MyNum m2 = new MyNum(8);
+		MyNum m3= new MyNum(97);
+		MyNum m4 = new MyNum(95);
+		
+		List<MyNum> myList = new ArrayList<MyNum>();
+		myList.add(m);
+		myList.add(m2);
+		myList.add(m3);
+		myList.add(m4);
+	}
+
+}

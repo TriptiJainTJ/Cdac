@@ -1,0 +1,35 @@
+
+package assigmnet;
+import java.util.Scanner;
+import static java.lang.System.out;
+class Myclass
+{
+	private int k,j;
+	Myclass()
+	{
+		System.out.println("Defualt constructor");
+	}
+	Myclass(int k)
+	{
+		this.k=k;
+		System.out.println("In one parametrised constructor k is "+k);
+	}
+	Myclass(int k, int j)
+	{
+		this.k=k;
+		this.j=j;
+		System.out.println("In two parametrised constructor k is "+k+ "j is "+ j;
+
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Myclass m1 = new Myclass();
+		Myclass m2 = new Myclass(26);
+		Myclass m3 = new Myclass(26,8);
+	}
+
+}

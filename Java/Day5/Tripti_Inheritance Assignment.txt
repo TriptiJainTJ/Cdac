@@ -1,0 +1,510 @@
+//q1
+package q1;
+
+class base1
+{
+	base1()
+	{
+		System.out.println("base1 const");
+	}
+}
+class base2 extends base1
+{
+	/*base2()
+	{
+		System.out.println("base2 const");
+	}*/
+	public int k;
+	base2(int k)
+	{
+		this.k = k;
+		System.out.println("base2 const");
+	}
+}
+class base3 extends base2
+{
+	base3()
+	{
+		super(26);
+		System.out.println("base3 const");
+	}
+}
+
+public class q1Main 
+{
+
+	public static void main(String[] args)
+	{
+		base3 b = new base3();
+
+	}
+
+}
+
+//q2
+package q2;
+
+class Vehicle
+{
+	public void start()
+	{
+		System.out.println("Vehcile is started");
+	}
+}
+class FourWheeler extends Vehicle
+{
+	public void start()
+	{
+		System.out.println("FourWheeler is started");
+	}
+}
+public class q2Main 
+{
+
+	public static void main(String[] args) 
+	{
+		FourWheeler f = new FourWheeler();
+		f.start();
+	}
+
+}
+
+//q3
+package q3;
+class MyClass
+{
+	MyClass()
+	{
+		System.out.println("Defualt cosnt of MyClass");
+	}
+}
+class MyClass1 extends MyClass
+{
+	MyClass1()
+	{
+		System.out.println("Defualt cosnt of MyClass1");
+	}
+}
+
+class MyClass2 extends MyClass
+{
+	MyClass2()
+	{
+		System.out.println("Defualt cosnt of MyClass2");
+	}
+}
+
+public class q3Main {
+	public static void main(String[] args) 
+	{
+		MyClass2 m = new MyClass2();
+		MyClass1 m1 = new MyClass1();
+	}
+	
+
+}
+
+//q4
+package q4;
+class Top1
+{
+	public void disp1()
+	{
+		System.out.println("top1 is displayed");
+	}
+}
+class Bottom1 extends Top1
+{
+	public void disp1()
+	{
+		System.out.println("Bottom1 is displayed");
+	}
+}
+class Bottom2 extends Top1
+{
+	public void disp1()
+	{
+		System.out.println("Bottom2 is displayed");
+	}
+}
+class Bottom3 extends Top1
+{
+	public void disp1()
+	{
+		System.out.println("Bottom3 is displayed");
+	}
+}
+
+public class q4 {
+	static void perform(Top1 ref)
+    {
+        ref.disp1();
+    }
+
+	public static void main(String[] args) 
+	{
+		perform(new Bottom1());
+		perform(new Bottom2());
+		perform(new Bottom3());
+	}
+
+
+}
+//q4
+package q4;
+class Top1
+{
+	public void disp1()
+	{
+		System.out.println("top1 is displayed");
+	}
+}
+class Bottom1 extends Top1
+{
+	public void disp1()
+	{
+		System.out.println("Bottom1 is displayed");
+	}
+}
+class Bottom2 extends Top1
+{
+	public void disp1()
+	{
+		System.out.println("Bottom2 is displayed");
+	}
+}
+class Bottom3 extends Top1
+{
+	public void disp1()
+	{
+		System.out.println("Bottom3 is displayed");
+	}
+}
+
+public class q4 {
+
+	public static void main(String[] args) 
+	{
+		Top1 arr[] = new Top1[3];
+		arr[0]= new Bottom1();
+		arr[1]= new Bottom2();
+		arr[2]= new Bottom3();
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].disp1();
+		}
+
+	}
+
+}
+
+//q5
+package q5;
+abstract class Shape
+{
+	abstract void draw();
+}
+
+class Triangle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Triangle is drawn");
+	}
+}
+class Polygon extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Polygon is drawn");
+	}
+}
+class Circle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Circle is drawn");
+	}
+}
+
+public class q5 
+{
+
+	public static void main(String[] args) 
+	{
+		Shape arr[] = new Shape[3];
+		arr[0]= new Triangle();
+		arr[1]= new Polygon();
+		arr[2]= new Circle();
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].draw();
+		}
+	}
+
+}
+
+package q5;
+abstract class Shape
+{
+	abstract void draw();
+}
+
+class Triangle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Triangle is drawn");
+	}
+}
+class Polygon extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Polygon is drawn");
+	}
+}
+class Circle extends Shape
+{
+	public void draw()
+	{
+		System.out.println("Circle is drawn");
+	}
+}
+
+public class q5 
+{
+	static void perform(Shape ref)
+    {
+        ref.draw();
+    }
+
+	public static void main(String[] args) 
+	{
+		perform(new Triangle());
+		perform(new Polygon());
+		perform(new Circle());
+	}
+
+
+}
+
+//q6
+package q6;
+
+interface A
+{
+	public void disp1();
+}
+
+interface B extends A
+{
+	public void disp2();
+}
+class C implements B
+{
+	public void disp1()
+	{
+		System.out.println("disp1 from C class");
+	}
+	public void disp2()
+	{
+		System.out.println("disp2 from C class");
+	}
+	public void disp3()
+	{
+		System.out.println("disp3 from C class");
+	}
+}
+public class q6 
+{
+
+	public static void main(String[] args) 
+	{
+		C c = new C();
+		c.disp3();
+		c.disp2();
+		c.disp1();
+	}
+
+}
+
+//q7
+package q7;
+
+class Parent1
+{
+	public void dispP1()
+	{
+		System.out.println("Parent1 diswp");
+	}
+}
+interface Parent2
+{
+	void dispP2();
+}
+
+class Child extends Parent1 implements Parent2
+{
+	public void dispP2()
+	{
+		System.out.println("disp2 of Parent2 from Child class");
+		
+	}
+	
+}
+
+public class q7 
+{
+
+	public static void main(String[] args) 
+	{
+		Child c = new Child();
+		c.dispP2();
+		c.dispP1();
+
+	}
+
+}
+//q8
+package q8;
+class base1
+{
+	public int k;
+	base1(int k)
+	{
+		this.k  = k;
+	}
+}
+
+class sub1 extends base1
+{
+	public int j,l,m;
+	sub1()
+	{
+		super(26);
+		System.out.println("In default  const of sub1");
+		System.out.println("k is "+k);
+	}
+	sub1(int j)
+	{
+		super(8);
+		System.out.println("In one parameter const of sub1");
+		this.j = j;
+		System.out.println("j is "+j);
+	}
+	sub1(int m, int l)
+	{
+		super(26);
+		System.out.println("In two parameter const of sub1");
+		this.m = m;
+		System.out.println("m is "+m);
+		this.l = l;
+		System.out.println("l is "+l);
+	}
+}
+public class q8 
+{
+
+	public static void main(String[] args) 
+	{
+		sub1 s = new sub1();
+		sub1 s1 = new sub1(8);
+		sub1 s2 = new sub1(3,4);
+
+	}
+
+}
+
+//q9
+package q9;
+interface Game
+{
+	public void play();
+}
+
+class Cricket implements Game
+{
+	public void play()
+	{
+		System.out.println("Cricket game is playig");
+	}
+}
+class FootBall implements Game
+{
+	public void play()
+	{
+		System.out.println("FootBall game is playig");
+	}
+}
+class Tennis implements Game
+{
+	public void play()
+	{
+		System.out.println("Tennis game is playig");
+	}
+}
+public class q9 
+{
+	public static void perform(Game ref)
+	{
+		ref.play();
+	}
+
+
+	public static void main(String[] args) 
+	{
+		perform(new Cricket());
+		perform(new FootBall());
+		perform(new Tennis());
+	}
+
+}
+package q9;
+interface Game
+{
+	public void play();
+}
+
+class Cricket implements Game
+{
+	public void play()
+	{
+		System.out.println("Cricket game is playig");
+	}
+}
+class FootBall implements Game
+{
+	public void play()
+	{
+		System.out.println("FootBall game is playig");
+	}
+}
+class Tennis implements Game
+{
+	public void play()
+	{
+		System.out.println("Tennis game is playig");
+	}
+}
+public class q9 
+{
+
+	public static void main(String[] args) 
+	{
+		Game arr[] = new Game[3];
+		arr[0]= new Cricket();
+		arr[1]= new FootBall();
+		arr[2]= new Tennis();
+		
+		for(int i = 0;i<arr.length;i++)
+		{
+			arr[i].play();
+		}
+		
+	}
+
+}
+

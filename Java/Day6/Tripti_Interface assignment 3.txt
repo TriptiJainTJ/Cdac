@@ -1,0 +1,123 @@
+on the developer side create following interface:
+	create necessary jar file and documentation
+
+interface Vehicle { 
+      
+    // all are the abstract methods. 
+    void changeGear(int a); 
+    void speedUp(int a); 
+    void applyBrakes(int a); 
+} 
+
+
+on the client side define following classes:
+
+class FourWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		// how to change gear in FourWheeler
+	}
+	public void speedUp(int a)
+	{
+		// how to speed up FourWheeler
+	}
+	public void applyBrakes(int a)
+	{
+		// how to apply brakes of FourWheeler
+	}
+}
+
+
+class TwoWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		// how to change gear in TwoWheeler
+	}
+	public void speedUp(int a)
+	{
+		// how to speed up TwoWheeler
+	}
+	public void applyBrakes(int a)
+	{
+		// how to apply brakes of TwoWheeler
+	}
+}
+
+create one more class "Demo" with
+	main and static perform method
+while calling perform pass any implementation of "Vehicle" and 
+invoke the methods polymorphically.
+
+code:
+//FourWheeler.java
+package clientpack;
+
+import devpack.Vehicle;
+
+public class FourWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		a = a+10;
+		System.out.println("Change the gear from "+a);
+	}
+	public void speedUp(int a)
+    {
+    	a = a+10;
+		System.out.println("Change the speed from "+a);
+    }
+	public void applyBrakes(int a)
+    {
+    	a = a+10;
+		System.out.println("Apply the break from "+a);
+    }
+}
+//TwoWheeler.java
+package clientpack;
+
+import devpack.Vehicle;
+
+public class TwoWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		a = a+5;
+		System.out.println("Change the gear from "+a);
+	}
+	public void speedUp(int a)
+    {
+    	a = a+5;
+		System.out.println("Change the speed from "+a);
+    }
+	public void applyBrakes(int a)
+    {
+    	a = a+10;
+		System.out.println("Apply the break from "+a);
+    }
+}
+//Demo.java
+package clientpack;
+
+import devpack.Vehicle;
+
+public class Demo 
+{
+	public static void perform(Vehicle ref)
+	{
+		ref.changeGear(10);
+		ref.speedUp(10);
+		ref.applyBrakes(10);
+	}
+	public static void main(String[] args) 
+	{
+		FourWheeler f = new FourWheeler();
+		TwoWheeler t = new TwoWheeler();
+		
+		perform(new FourWheeler());
+		perform(new TwoWheeler());
+	}
+
+}
+

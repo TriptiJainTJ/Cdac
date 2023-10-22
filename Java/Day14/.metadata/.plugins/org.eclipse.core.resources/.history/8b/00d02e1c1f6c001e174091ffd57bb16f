@@ -1,0 +1,27 @@
+package q1;
+interface First
+{
+	void disp1();
+	default void disp2()
+	{
+		System.out.println("default method disp2");
+	}
+	static void disp3()
+	{
+		System.out.println("static method disp3");
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args)
+	{
+		First ref= ()->{System.out.println("disp1 by lambda");};
+		ref.disp1();
+		
+		ref.disp2();
+		First.disp3();
+
+	}
+
+}

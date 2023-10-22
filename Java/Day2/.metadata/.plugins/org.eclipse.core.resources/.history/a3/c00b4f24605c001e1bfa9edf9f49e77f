@@ -1,0 +1,17 @@
+//4
+package assigmnet;
+class DemoOb
+{
+	
+}
+public class q4
+{
+	public static void main(String[] args) 
+	{
+		DemoOb d = new DemoOb();//first obj
+		DemoOb ref = d;// ref will have adderess of that obj which is in d
+		ref = new DemoOb();// now ref will no lonegr refer to where d's is refering
+		// now it will have address of new obj;
+	}
+
+}

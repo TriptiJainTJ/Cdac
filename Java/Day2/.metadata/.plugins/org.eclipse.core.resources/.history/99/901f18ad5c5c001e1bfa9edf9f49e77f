@@ -1,0 +1,18 @@
+
+package assigmnet;
+import static java.lang.System.out;
+class Emp
+{
+
+}
+public class q3
+{
+
+	public static void main(String[] args) 
+	{
+		Myclass m1 = new Myclass();
+		Myclass m2 = new Myclass(26);
+		Myclass m3 = new Myclass(26,8);
+	}
+
+}

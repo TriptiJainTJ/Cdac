@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package devpack;
+
+/**
+ * 
+ */
+public class MyClass1 
+{
+	private int num;
+
+	/**
+	 * @return vaue of num
+	 */
+	public int getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num set for num variable
+	 */
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	/**
+	 * 
+	 */
+	public MyClass1() {
+		super();
+		this.num=num;
+		// constructor
+	}
+
+	@Override
+	public String toString() {
+		return "MyClass1 num = " + num;
+	}
+	
+	
+	
+}

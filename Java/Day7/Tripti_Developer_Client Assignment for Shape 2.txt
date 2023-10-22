@@ -1,0 +1,94 @@
+Shaon developer side:
+
+create interface "Shape" with "void draw();" method.
+
+now define child classes 
+	Triangle,Rect and Circle
+
+
+
+on Client side:
+
+define "ShapeDemo" class with main and perform functions
+
+define perform function in such a way that given any shape it can invoke "draw()" of it.
+
+code:
+//ShapeDemo.java
+package clientpro;
+
+import devpro.Circle;
+import devpro.Rect;
+import devpro.Shape;
+import devpro.Triangle;
+
+public class ShapeDemo
+{
+	public static void perform(Shape ref)
+	{
+		ref.draw();
+	}
+
+	public static void main(String[] args) 
+	{
+		perform(new Triangle());
+		perform(new Rect());
+		perform(new Circle());
+
+	}
+
+}
+
+//Circle .java
+package devpro;
+
+public class Circle implements Shape
+{
+
+	@Override
+	public void draw() 
+	{
+		System.out.println("draw a circle");
+		
+	}
+	
+
+}
+//Rect.java
+package devpro;
+
+public class Rect implements Shape
+{
+
+	@Override
+	public void draw() 
+	{
+		System.out.println("draw a ract");
+		
+	}
+	
+
+}
+//Shape.java
+package devpro;
+
+public interface Shape 
+{
+	public void draw();
+}
+
+//Triangle.java
+package devpro;
+
+public class Triangle implements Shape
+{
+
+	@Override
+	public void draw() 
+	{
+		System.out.println("draw a traingle");
+		
+	}
+	
+
+}

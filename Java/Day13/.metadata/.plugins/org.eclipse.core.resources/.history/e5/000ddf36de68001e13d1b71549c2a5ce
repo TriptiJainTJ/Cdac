@@ -1,0 +1,20 @@
+package arraylistAssignmnt;
+
+class MyNum
+{
+	private int num;
+	MyNum(int nun)
+	{
+		this.num = num;
+	}
+}
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

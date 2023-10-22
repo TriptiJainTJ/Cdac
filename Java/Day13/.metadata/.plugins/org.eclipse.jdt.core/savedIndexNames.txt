@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/.metadata/.plugins/org.eclipse.jdt.core
+1549270249.index
+1865797976.index
+238799861.index

@@ -1,0 +1,24 @@
+package q1;
+
+import java.util.concurrent.locks.*;
+
+public class q3 implements Runnable
+{
+	ReentrantLock r = new ReentrantLock();
+	public void run()
+	{
+		r.lock();
+		for(char ch='A';ch<='J';ch++)
+		{
+			System.out.println(ch+" "+Thread.currentThread().getName());
+		}
+		r.unlock();
+		
+	}
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

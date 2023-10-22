@@ -1,0 +1,39 @@
+//1
+package assigmnet;
+class Shape
+{
+	private int width;
+	private int height;
+	
+	public void setWidth(int width)
+	{
+		this.width=width;
+	}
+	public int getWidth()
+	{
+		return width;
+	}
+	
+	public void setHeight(int height)
+	{
+		this.height=height;
+	}
+	public int getHeight()
+	{
+		return height;
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Shape s = new Shape();
+		s.setWidth(26);
+		s.setHeight(8);
+		System.out.println("Width is "+s.getWidth());
+		System.out.println("Height is "+s.getHeight());
+
+	}
+
+}

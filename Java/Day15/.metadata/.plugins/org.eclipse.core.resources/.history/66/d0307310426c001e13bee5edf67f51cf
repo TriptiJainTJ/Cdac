@@ -1,0 +1,26 @@
+package q1;
+interface Seventh
+{
+	void fun(int k);
+}
+class Sample
+{
+	Sample(int k)
+	{
+		System.out.println("inside parameterized constructor of Sample "+k);
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+//		Seventh ref = Sample::new;
+//		ref.fun(200);
+		
+		//lamda
+		Seventh ref = ()->{new Sample};
+		ref.fun(200);
+	}
+
+}

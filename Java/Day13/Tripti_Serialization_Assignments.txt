@@ -1,0 +1,384 @@
+1)create a customer class with following attributes
+	custid
+	custname
+	address
+	age
+create one instance of it and store it in a file. (Serialization).
+now open a file, read the object and read its contents . (Deserialization)
+
+
+
+
+2) Person class implements Serializable with
+	private String name
+	private int age
+
+		getters and setters
+		parameterized constructor
+
+Student extends Person
+	private int rollno
+		getter and setters
+		parameterized constructor accepting name,age and rollno
+			pass name and age to the super constructor
+
+
+Demo class with main
+	create one object of Student, write it inside file and then read.
+
+3) Define a class "Student" with
+	private int rollno and private String name and private int age;
+	setters and getters
+
+	create 2 objects of Student and write them inside filesystem and thereafter read both the objects and display.
+
+4) create two classes
+	Engine
+		private int speed
+		private String type
+			setters and getters
+
+	Car
+		private Engine engine;
+		private String modelname;
+			setters and getters
+
+define class "Demo" with main
+	inside main create object of Car and then pass Engine to its setEngine method.
+	now serialize this object of Car and deserialize it.
+
+Answers:
+//q1
+package q1;
+
+import java.io.*;
+
+public class Customer implements Serializable
+{
+	int custid=1;
+	int age = 26;
+	String custname="tripti";
+	String address = "Ferozepur";
+
+	public static void main(String[] args) 
+	{
+		Customer ob = new Customer();
+		try(FileOutputStream fos = new FileOutputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q1.txt"))
+		{
+			try(ObjectOutputStream oos = new ObjectOutputStream(fos))
+			{
+				oos.writeObject(ob);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("custid "+ ob.custid);
+		System.out.println("age "+ ob.age);
+		System.out.println("custname " + ob.custname);
+		System.out.println("address "+ob.address);
+		
+		try(FileInputStream fis = new FileInputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q1.txt"))
+		{
+			try(ObjectInputStream ois = new ObjectInputStream(fis))
+			{
+				Customer ob2 = (Customer)ois.readObject();
+				System.out.println("custid "+ ob.custid);
+				System.out.println("age "+ ob.age);
+				System.out.println("custname " + ob.custname);
+				System.out.println("address "+ob.address);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}
+
+//q2
+package q2;
+
+import java.io.*;
+
+class Person  implements Serializable
+{
+	private String name;
+	private int age;
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+	public int getAge()
+	{
+		return age;
+	}
+	Person(String name, int age)
+	{
+		this.name=name;
+		this.age=age;
+	}
+}
+class Student extends Person
+{
+	private static final long serialVersionUID = 1L;
+	private int rollNo;
+	public void setRollNo(int rollNo)
+	{
+		this.rollNo = rollNo;
+	}
+	public int getRollNo()
+	{
+		return rollNo;
+	}
+	
+	public Student(String name, int age,int rollNo)
+	{
+		super(name,age);
+		this.rollNo= rollNo;
+	}
+}
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		Student s = new Student("Trpti ", 26, 95);
+		try(FileOutputStream fos = new FileOutputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q1.txt"))
+				{
+			try(ObjectOutputStream oos = new ObjectOutputStream(fos))
+			{
+				oos.writeObject(s);
+			}
+				}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("Name is "+s.getName());
+		System.out.println("Age is "+ s.getAge());
+		System.out.println("Roll no "+s.getRollNo());
+		
+		try(FileInputStream fis = new FileInputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q1.txt"))
+		{
+			try(ObjectInputStream ois = new ObjectInputStream(fis))
+			{
+				Student obj2=(Student)ois.readObject();
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("Name is "+s.getName());
+		System.out.println("Age is "+ s.getAge());
+		System.out.println("Roll no "+s.getRollNo());
+	}
+
+}
+
+//q3
+package q3;
+
+import java.io.*;
+
+class Student implements Serializable
+{
+	private int rollNo;
+	private String name;
+	private int age;
+	
+	public void setRollNo(int rollNo)
+	{
+		this.rollNo = rollNo;
+	}
+	public int getRollNo()
+	{
+		return rollNo;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+	public int getAge()
+	{
+		return age;
+	}
+}
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		Student s = new Student();
+		Student s2 = new Student();
+		try(FileOutputStream fos = new FileOutputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q3.txt"))
+				{
+			try(ObjectOutputStream oos = new ObjectOutputStream(fos))
+			{
+				oos.writeObject(s);
+				oos.writeObject(s2);
+			}
+				}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		s.setName("Akshay Goyal");
+		s.setAge(27);
+		s.setRollNo(96);
+		
+		s2.setName("Tripti Jain");
+		s2.setAge(26);
+		s2.setRollNo(95);
+		
+		
+		try(FileInputStream fis = new FileInputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q3.txt"))
+		{
+			try(ObjectInputStream ois = new ObjectInputStream(fis))
+			{
+				Student obj2=(Student)ois.readObject();
+				Student obj3=(Student)ois.readObject();
+				
+				System.out.println("for 1st obj Name is "+obj2.getName());
+				System.out.println("for 1st obj Age is "+ obj2.getAge());
+				System.out.println("for 1st obj Roll no "+obj2.getRollNo());
+				System.out.println("for 2nd obj Name is "+obj3.getName());
+				System.out.println("for 2nd obj Age is "+ obj3.getAge());
+				System.out.println("for 2nd obj Roll no "+obj3.getRollNo());
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+//q4
+package q4;
+
+import java.io.*;
+
+class Engine implements Serializable
+{
+	private int speed;
+	private String type;
+	
+	public Engine(int speed, String type)
+	{
+		this.speed = speed;
+		this.type = type;
+	}
+	
+	public void setSpeed(int speed)
+	{
+		this.speed = speed;
+	}
+	public int getSpeed()
+	{
+		return speed;
+	}
+	public String setType(String type)
+	{
+		return this.type = type;
+	}
+	public String getType()
+	{
+		return type;
+	}
+}
+
+class Car implements Serializable
+{
+	private Engine engine;
+	private String modelName;
+	
+	public void setEnigne(Engine engine)
+	{
+		this.engine = engine;
+	}
+	
+	public Engine getEngine()
+	{
+		return engine;
+	}
+	
+	public String setModelName(String modelName)
+	{
+		return this.modelName = modelName;
+	}
+	
+	public String getModelName()
+	{
+		return modelName;
+	}
+}
+
+public class Demo 
+{
+
+	public static void main(String[] args) 
+	{
+		Engine e = new Engine(150,"NOIDEA");
+		Car ob = new Car();
+		ob.setEnigne(e);
+		ob.setModelName("I10");
+		
+		try(FileOutputStream fos = new FileOutputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q4.txt"))
+		{
+			try(ObjectOutputStream oos = new ObjectOutputStream(fos))
+			{
+				oos.writeObject(ob);
+			}
+		}
+		catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}
+		
+		
+		try(FileInputStream fis = new FileInputStream("/Users/triptijain/Downloads/Vita/DAC Mine/Java/Day13/q4.txt"))
+		{
+			try(ObjectInputStream ois = new ObjectInputStream(fis))
+			{
+				Car ob2 = (Car)ois.readObject();
+				Engine engine = ob2.getEngine();
+				System.out.println("car model name is "+ob2.getModelName());
+				System.out.println("Car's engine is "+ob2.getEngine());
+				System.out.println("Car speed is "+engine.getSpeed());
+				System.out.println("car type is "+engine.getType());
+			}
+			
+		}
+		catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}
+
+	}
+
+}

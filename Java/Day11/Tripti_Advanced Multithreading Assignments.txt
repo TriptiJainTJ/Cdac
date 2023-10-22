@@ -1,0 +1,163 @@
+1) create a multi-threaded application by using Thread pool.create 2 threads. each thread should display characters from A to J. [ make sure while one thread executes , other thread should not interfere ]
+ 
+2) create a multi-threaded application by using Thread pool.create 2 threads. each thread should display numbers from 1 to 10. [ make sure while one thread executes , other thread should not interfere ]
+Also when first thread displays nos. from 1 to 5 it should released the lock and allow other thread to display nos. from 1 to 5 and then previous thread will display nos. from 6 to 10 and so on.
+
+
+3) create a multi-threaded application by using Thread pool and ReentrantLock (explicit locking) .create 2 threads. each thread should display characters from A to J. [ make sure while one thread executes , other thread should not interfere ]
+
+
+4) create a multi-threaded application by using Thread pool and ReentrantLock.create 2 threads. each thread should display numbers from 1 to 10. [ make sure while one thread executes , other thread should not interfere ]
+Also when first thread displays nos. from 1 to 5 it should released the lock and allow other thread to display nos. from 1 to 5 and then previous thread will display nos. from 6 to 10 and so on.
+
+Answers:
+//q1
+package q1;
+
+import java.util.concurrent.ExecutorService;
+
+import java.util.concurrent.Executors;
+
+public class q1 implements Runnable
+{
+	synchronized static void fun()
+	{
+		for(char ch='A';ch<='J';ch++)
+		{
+			System.out.println(ch+" "+Thread.currentThread().getName());
+		}
+	}
+	public void run()
+	{
+		fun();
+	}
+	public static void main(String ...args)
+	{
+		ExecutorService e = Executors.newFixedThreadPool(2);
+		for(int i=0;i<2;i++)
+		{
+			e.execute(new q1());
+		}
+		e.shutdown();
+	}
+
+}
+//q2
+package q1;
+
+import java.util.concurrent.ExecutorService;
+
+import java.util.concurrent.Executors;
+
+public class q2 implements Runnable
+{
+	synchronized void fun()
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(i+" "+Thread.currentThread().getName());
+			if(i==5)
+			{
+				try 
+				{
+					wait();
+				} 
+				catch (InterruptedException e) 
+				{
+					
+					e.printStackTrace();
+				}
+			}
+			notifyAll();
+		}
+	}
+	public void run()
+	{
+		fun();
+	}
+	public static void main(String ...args)
+	{
+		ExecutorService e = Executors.newFixedThreadPool(2);
+		for(int i=0;i<2;i++)
+		{
+			e.execute(new q2());
+		}
+		e.shutdown();
+	}
+
+}
+//q3
+package q1;
+
+import java.util.concurrent.*;
+import java.util.concurrent.locks.*;
+
+public class q3 implements Runnable
+{
+	ReentrantLock r = new ReentrantLock();
+	public void run()
+	{
+		r.lock();
+		for(char ch='A';ch<='J';ch++)
+		{
+			System.out.println(ch+" "+Thread.currentThread().getName());
+		}
+		r.unlock();
+		
+	}
+	public static void main(String[] args) 
+	{
+		q3 ob = new q3();
+		ExecutorService e = Executors.newFixedThreadPool(2);
+		e.execute(ob);
+		e.execute(ob);
+		e.shutdown();
+	}
+
+}
+//q4
+package q1;
+
+import java.util.concurrent.*;
+import java.util.concurrent.locks.*;
+
+public class q4 implements Runnable
+{
+	ReentrantLock r = new ReentrantLock();
+	public  void fun()
+	{
+		r.lock();
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(i+" "+Thread.currentThread().getName());
+			if(i==5)
+			{
+				try 
+				{
+					wait();
+				} 
+				catch (InterruptedException e) 
+				{
+					
+					e.printStackTrace();
+				}
+			}
+			notifyAll();
+		}
+		r.unlock();
+	}
+	public void run()
+	{
+		fun();
+		
+	}
+	public static void main(String[] args) 
+	{
+		q4 ob = new q4();
+		ExecutorService e = Executors.newFixedThreadPool(2);
+		e.execute(ob);
+		e.execute(ob);
+		e.shutdown();
+	}
+
+}

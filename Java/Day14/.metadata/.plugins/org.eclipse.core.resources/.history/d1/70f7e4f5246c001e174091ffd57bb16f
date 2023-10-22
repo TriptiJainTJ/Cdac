@@ -1,0 +1,20 @@
+package q1;
+interface MyInterface
+{
+	void fun();
+}
+public class Demo 
+{
+	static void perform(MyInterface ref)
+	{
+		ref.fun();
+	}
+
+	public static void main(String[] args)
+	{
+		
+		perform(()->{System.out.println("fun from lambda");});
+		System.out.println(ref.getClass().getName()));
+	}
+
+}

@@ -1,0 +1,24 @@
+package q1;
+
+public class q1 implements Runnable
+{
+	public void run()
+	{
+		for(char ch='A';ch<='J';ch++)
+		{
+			System.out.println(ch+" "+Thread.currentThread().getName());
+		}
+	}
+	public static void main(String ...args)
+	{
+		ExecutorService e = Executor.newcachedThreadPool();
+		q1 ob = new q1();
+		Thread t1 = new Thread(ob);
+		Thread t2 = new Thread(ob);
+		t1.setName("first");
+		t2.setName("second");
+		t1.start();
+		t2.start();
+	}
+
+}

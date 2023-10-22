@@ -1,0 +1,15 @@
+package q1;
+interface Second
+{
+	void disp4();
+}
+public class Demo 
+{
+
+	public static void main(String[] args)
+	{
+		
+
+	}
+
+}

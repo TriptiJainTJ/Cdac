@@ -1,0 +1,19 @@
+//3
+package assigmnet;
+class Emp
+{
+	private static int cnt=26;
+	
+	public static int getCnt()
+	{
+		return cnt;
+	}
+}
+public class q3
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("Cnt is "+Emp.getCnt());
+	}
+
+}

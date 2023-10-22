@@ -1,0 +1,21 @@
+package q1;
+interface Calculator
+{
+	int multiply(int a,int b);
+}
+public class CalcDemo 
+{
+	static void perform(MyInterface ref)
+	{
+		ref.fun();
+		System.out.println(ref.getClass().getName());
+	}
+
+	public static void main(String[] args)
+	{
+		
+		perform(()->{System.out.println("fun from lambda");});
+		
+	}
+
+}

@@ -1,0 +1,581 @@
+//q1
+package q1;
+
+public class First 
+{
+	private int age;
+	private String name;
+	
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+	
+	public int getAge()
+	{
+		return age;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	First()
+	{
+		System.out.println("Default const of First Class");
+	}
+	First(int age, String name)
+	{
+		System.out.println("Parametrised const of First Class");
+		this.age=age;
+		this.name = name;
+	}
+
+}
+
+package q1;
+
+public class Second 
+{
+	private int adharNo;
+	private String address;
+	
+	public void setAdharNo(int adharNo)
+	{
+		this.adharNo = adharNo;
+	}
+	
+	public int getAdharNo()
+	{
+		return adharNo;
+	}
+	
+	public void setAddress(String address)
+	{
+		this.address = address;
+	}
+	
+	public String getAddress()
+	{
+		return address;
+	}
+	
+	Second()
+	{
+		System.out.println("Default const of Second Class");
+	}
+	Second(int adharNo, String address)
+	{
+		System.out.println("Parametrized const of Second Class");
+		this.adharNo = adharNo;
+		this.address = address;
+	}
+	
+}
+package q1;
+
+public class Main 
+{
+
+	public static void main(String[] args) 
+	{
+		First f1 = new First();
+		System.out.println("when values are not initialized");
+		System.out.println(f1.getAge());
+		System.out.println(f1.getName());
+		System.out.println();
+		
+		First f2 = new First(27,"AKSHAY");
+		System.out.println(f2.getAge());
+		System.out.println(f2.getName());
+		System.out.println();
+		
+		Second s1 = new Second();
+		System.out.println(s1.getAdharNo());
+		System.out.println(s1.getAddress());
+		System.out.println();
+		
+		Second s2 = new Second(98765, "Rohtak");
+		System.out.println(s2.getAdharNo());
+		System.out.println(s2.getAddress());
+	}
+
+}
+
+//q2
+package q2;
+class ques2
+{
+	private int prnNo;
+	private static int cdacId;
+	
+	public int getPrnNo() {
+		return prnNo;
+	}
+	public void setPrnNo(int prnNo) {
+		this.prnNo = prnNo;
+	}
+	
+	public static int getCdacId() {
+		return cdacId;
+	}
+	public static void setCdacId(int cdacId) {
+		ques2.cdacId = cdacId;
+	}
+}
+public class q2 
+{
+	public static void main(String ...args)
+	{
+		ques2.setCdacId(23);
+		System.out.println("Cdac id is "+ques2.getCdacId());
+		
+		ques2 obj = new ques2();
+		obj.setPrnNo(95);
+		System.out.println("PRN is "+obj.getPrnNo());
+	}
+}
+//q3
+
+package q3;
+
+public class Check 
+{
+	private int a=1;
+	int b=2;//default
+	protected int c=3;
+	public int d=4;
+	
+	public void disp()
+	{
+		System.out.println("Disp in Check class");
+	}
+}
+package q3;
+
+public class CheckDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		Check obj = new Check();
+		obj.disp();
+		//int ares = obj.a;
+		int bres = obj.b;
+		int cres=obj.c;
+		int dres = obj.d;
+		
+		//System.out.println("a is checkdemo"+ ares);
+		System.out.println("b is checkdemo"+ bres);
+		System.out.println("c is checkdemo"+ cres);
+		System.out.println("d is checkdemo"+ dres);
+		
+	}
+
+}
+
+
+//q4
+package q4;
+
+public class MyClass1 
+{
+	MyClass1()
+	{
+		System.out.println("Defualt cosnt of MyClass1");
+	}
+	public int prnNo = 95;
+	
+	public void disp()
+	{
+		System.out.println("PRN No is "+prnNo);
+	}
+	
+	public static void main (String ... args)
+	{
+		MyClass1 m = new MyClass1();
+		m.disp();
+	}
+}
+
+//q5
+package q5;
+
+class MyClass
+{
+	MyClass()
+	{
+		System.out.println("Defualt cosnt of MyClass");
+	}
+	public int prnNo = 95;
+	
+	public void disp1()
+	{
+		System.out.println("PRN No is "+prnNo);
+	}
+}
+class MyClass1 extends MyClass
+{
+	MyClass1()
+	{
+		System.out.println("Defualt cosnt of MyClass1");
+	}
+	public int cdacId = 23;
+	
+	public void disp2()
+	{
+		System.out.println("Cdac id is "+cdacId);
+	}
+}
+
+class MyClass2 extends MyClass1
+{
+	MyClass2()
+	{
+		System.out.println("Defualt cosnt of MyClass2");
+	}
+	public int vitaId = 2;
+	
+	public void disp3()
+	{
+		System.out.println("vita id is "+vitaId);
+	}
+}
+
+
+public class q5Main 
+{
+
+	public static void main(String[] args)
+	{
+		MyClass2 m = new MyClass2();
+		m.disp3();
+		m.disp2();
+		m.disp1();
+
+	}
+
+}
+
+//q6
+package q6;
+
+class MyClass
+{
+	MyClass()
+	{
+		System.out.println("Defualt cosnt of MyClass");
+	}
+	public int prnNo = 95;
+	
+	public void disp1()
+	{
+		System.out.println("PRN No is "+prnNo);
+	}
+}
+class MyClass1 extends MyClass
+{
+	MyClass1()
+	{
+		System.out.println("Defualt cosnt of MyClass1");
+	}
+	public int cdacId = 23;
+	
+	public void disp2()
+	{
+		System.out.println("Cdac id is "+cdacId);
+	}
+}
+
+class MyClass2 extends MyClass
+{
+	MyClass2()
+	{
+		System.out.println("Defualt cosnt of MyClass2");
+	}
+	public int vitaId = 2;
+	
+	public void disp3()
+	{
+		System.out.println("vita id is "+vitaId);
+	}
+}
+
+
+
+public class q6Main {
+
+	public static void main(String[] args) 
+	{
+		MyClass2 m = new MyClass2();
+		System.out.println("functions of myclass2 and myclass p to c relationship");
+		m.disp3();
+		m.disp1();
+		
+		MyClass1 m1 = new MyClass1();
+		System.out.println("functions of myclass1 and myclass p to c relationship");
+		m1.disp2();
+	}
+
+}
+
+//q7
+package q7;
+
+class MyClass
+{
+	public int prnNo = 95;
+	
+	public void disp1()
+	{
+		System.out.println("PRN No is "+prnNo);
+	}
+}
+class MyClass1 extends MyClass
+{
+	public int cdacId = 23;
+	
+	public void disp1()
+	{
+		System.out.println("PRN No is "+prnNo);
+		System.out.println("Cdac id is "+cdacId);
+	}
+}
+
+public class q7Main {
+
+	public static void main(String[] args) 
+	{
+		MyClass1 m = new MyClass1();
+		m.disp1();
+	}
+
+}
+
+//q8
+package q8;
+
+class base
+{
+	public void fun()
+	{
+		System.out.println("base class fun");
+	}
+}
+class Sub extends base
+{
+	public int age;
+	public void fun(int age)
+	{
+		System.out.println("Sub class fun");
+		this.age = age;
+		System.out.println("age is "+age);
+	}
+}
+
+public class q8Main 
+{
+
+	public static void main(String[] args) 
+	{
+		Sub s = new Sub();
+		s.fun(26);
+
+	}
+
+}
+
+
+//q9
+package q9;
+
+class Shape
+{
+	public void draw()
+	{
+		System.out.println("draw a shape");
+	}
+}
+
+class Circle extends Shape
+{
+	public int radius = 5;
+	public void draw()
+	{	
+		System.out.println("draw a circle of raidus of "+ radius);
+
+	}
+}
+
+class Rectangle extends Shape
+{
+	public int width = 5;
+	public int height = 5;
+	public double area = width+height;
+	public void draw()
+	{	
+		System.out.println("draw a reactangle of "+ area);
+
+	}
+}
+
+
+public class ShapeDemo 
+{
+	static void perform(Shape ref)
+    {
+        ref.draw();
+    }
+
+	public static void main(String[] args) 
+	{
+		perform(new Circle());
+		perform(new Rectangle());
+	}
+
+}
+
+package q9;
+
+class Shape
+{
+	public void draw()
+	{
+		System.out.println("draw a shape");
+	}
+}
+
+class Circle extends Shape
+{
+	public int radius = 5;
+	public void draw()
+	{	
+		System.out.println("draw a circle of raidus of "+ radius);
+
+	}
+}
+
+class Rectangle extends Shape
+{
+	public int width = 5;
+	public int height = 5;
+	public double area = width+height;
+	public void draw()
+	{	
+		System.out.println("draw a reactangle whose area is "+ area);
+
+	}
+}
+
+
+public class ShapeDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		Shape arr[] = new Shape[2];
+		arr[0]= new Circle();
+		arr[1]= new Rectangle();
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].draw();
+		}
+	}
+
+}
+
+//q10
+package q10;
+
+interface Vehicle
+{
+	void start();
+}
+
+class TwoWheeler implements Vehicle
+{
+	public void start()
+	{
+		System.out.println("TwoWheeler is started");
+	}
+}
+
+class ThreeWheeler implements Vehicle
+{
+	public void start()
+	{
+		System.out.println("ThreeWheeler is started");
+	}
+}
+class FourWheeler implements Vehicle
+{
+	public void start()
+	{
+		System.out.println("FourWheeler is started");
+	}
+}
+public class VDemo {
+
+	static void perform(Vehicle ref)
+	{
+		ref.start();
+	}
+	public static void main(String[] args) 
+	{
+		perform(new TwoWheeler());
+		perform(new ThreeWheeler());
+		perform(new FourWheeler());
+	}
+
+}
+package q10;
+
+interface Vehicle
+{
+	void start();
+}
+
+class TwoWheeler implements Vehicle
+{
+	public void start()
+	{
+		System.out.println("TwoWheeler is started");
+	}
+}
+
+class ThreeWheeler implements Vehicle
+{
+	public void start()
+	{
+		System.out.println("ThreeWheeler is started");
+	}
+}
+class FourWheeler implements Vehicle
+{
+	public void start()
+	{
+		System.out.println("FourWheeler is started");
+	}
+}
+public class VDemo {
+
+	public static void main(String[] args) 
+	{
+		Vehicle arr[]= new Vehicle[3];
+		arr[0]= new TwoWheeler();
+		arr[1]= new ThreeWheeler();
+		arr[2]= new FourWheeler();
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].start();
+		}
+	}
+
+}

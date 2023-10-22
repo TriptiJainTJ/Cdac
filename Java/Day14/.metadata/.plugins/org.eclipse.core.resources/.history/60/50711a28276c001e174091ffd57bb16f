@@ -1,0 +1,20 @@
+package q1;
+class Display
+{
+	synchronized void disp()
+	{
+		for(int i =1;i<=10;i++)
+		{
+			System.out.println(i);
+		}
+	}
+}
+public class CalcDemo 
+{
+	public static void main(String[] args)
+	{
+		CalcDemo d = new CalcDemo();
+		Runnable ref = ()->{d,disp();};
+	}
+
+}

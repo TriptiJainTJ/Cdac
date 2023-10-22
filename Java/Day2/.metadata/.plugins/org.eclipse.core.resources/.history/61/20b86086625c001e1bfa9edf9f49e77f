@@ -1,0 +1,78 @@
+//5
+package assigmnet;
+class A
+{
+	private int num1;
+	private static int num2=26;
+	
+	public void setNum1(int num1)
+	{
+		this.num1=num1;
+	}
+	public int getNum1()
+	{
+		return num1;
+	}
+	
+	public static int getNum2()
+	{
+		return num2;
+	}
+}
+class B
+{
+	private int num3;
+	private static int num4=12;
+	
+	public void setNum3(int num3)
+	{
+		this.num3=num3;
+	}
+	public int getNum3()
+	{
+		return num3;
+	}
+	
+	public static int getNum4()
+	{
+		return num4;
+	}
+}
+class C
+{
+	private int num5;
+	private static int num6=97;
+	
+	public void setNum1(int num5)
+	{
+		this.num5=num5;
+	}
+	public int getNum5()
+	{
+		return num5;
+	}
+	
+	public static int getNum6()
+	{
+		return num6;
+	}
+}
+public class q5
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.setNum1(8);
+		B b = new B();
+		b.setNum3(2);
+		C c = new C();
+		c.setNum5(2);
+		System.out.println("num1 is "+ a.getNum1());
+		System.out.println("num2 is "+ A.getNum2());
+		System.out.println("num3 is "+ b.getNum3());
+		System.out.println("num4 is "+ B.getNum4());
+		System.out.println("num5 is "+ c.getNum5());
+		System.out.println("num6 is "+ C.getNum6());
+	}
+
+}

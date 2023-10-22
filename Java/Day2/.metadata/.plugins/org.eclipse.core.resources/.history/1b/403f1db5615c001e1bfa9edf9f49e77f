@@ -1,0 +1,37 @@
+//5
+package assigmnet;
+class A
+{
+	private int num1;
+	private static int num2;
+	
+	public void setNum1(int num1)
+	{
+		this.num1=num1;
+	}
+	public int getNum1()
+	{
+		return num1;
+	}
+	
+	public static int getNum2()
+	{
+		return num2;
+	}
+}
+class B
+{
+	
+}
+class C
+{
+	
+}
+public class q5
+{
+	public static void main(String[] args) 
+	{
+		
+	}
+
+}

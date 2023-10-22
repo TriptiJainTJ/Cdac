@@ -1,0 +1,94 @@
+public abstract class Course
+{
+	public void start()
+	{
+		// start process
+	}
+	public abstract double getFee();
+	public abstract void evaluate();
+}
+
+define child classes of above abstract class
+	DACDBDACourse extends Course
+	MSCitCourse extends Course
+
+show late binding with the help of "perform()" method.
+
+code:
+//Course.java
+package abstractClass_1;
+
+public abstract class Course 
+{
+	public void start()
+	{
+		System.out.println("Course is started");
+	}
+	
+	public abstract double getFee();
+	public abstract void evaluate();
+}
+//DACDBDACourse.java
+package abstractClass_1;
+
+public class DACDBDACourse extends Course 
+{
+	double fee;
+	public void start()
+	{
+		System.out.println("DAC and DBDA Course is started");
+	}
+	public double getFee() 
+	{
+		fee = 98.22;
+		return fee;
+	}
+
+	public void evaluate() 
+	{
+		System.out.println("evaluation of fee "+fee);
+	}
+
+}
+//MSCitCourse.java
+package abstractClass_1;
+
+public class MSCitCourse extends Course 
+{
+	double fee;
+	public void start()
+	{
+		System.out.println("MSCitCourse is started");
+	}
+	public double getFee() 
+	{
+		fee = 87.22;
+		return fee;
+	}
+
+	public void evaluate() 
+	{
+		System.out.println("evaluation of fee "+fee);
+		
+	}
+
+}
+//Demo.java
+package abstractClass_1;
+
+public class Demo 
+{
+	public static void perform(Course ref)
+	{
+		ref.start();
+		ref.getFee();
+		ref.evaluate();
+	}
+	public static void main(String[] args) 
+	{
+		perform(new DACDBDACourse());
+		perform(new MSCitCourse());
+
+	}
+
+}

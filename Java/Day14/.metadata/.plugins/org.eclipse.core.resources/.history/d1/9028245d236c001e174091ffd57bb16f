@@ -1,0 +1,15 @@
+package q1;
+interface MyInterface
+{
+	void fun();
+}
+public class Demo 
+{
+
+	public static void main(String[] args)
+	{
+		
+
+	}
+
+}

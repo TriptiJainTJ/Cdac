@@ -1,0 +1,31 @@
+package q1;
+interface Fifth
+{
+	int add(int a,int b);
+}
+class Math1
+{
+	int calc(int a,int b)
+	{
+		System.out.println("a is "+a);
+		System.out.println("b is "+b);
+		return a+b;
+	}
+}
+public class q1 
+{
+
+	public static void main(String[] args) 
+	{
+		Math1 m = new Math1();
+		Fifth ref = m::calc;
+		System.out.println("addition of a and b is "+ref.add(8,26));
+	
+		System.out.println("by lambda");
+		Fifth ref2 = (a,b)->{return m.calc(23, 95);};
+		ref2.add(2, 1);
+
+
+	}
+
+}

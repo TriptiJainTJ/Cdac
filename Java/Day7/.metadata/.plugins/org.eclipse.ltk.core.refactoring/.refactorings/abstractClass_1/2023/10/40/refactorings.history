@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;DACDBDACourse.java&apos; to &apos;abstractClass_1/src/abstractClass_1&apos;&#x0A;- Original project: &apos;abstractClass_1&apos;&#x0A;- Destination element: &apos;abstractClass_1/src/abstractClass_1&apos;&#x0A;- Original element: &apos;abstractClass_1.DACDBDACourse.java&apos;" description="Copy compilation unit" destination="/src&lt;abstractClass_1" element1="/src&lt;abstractClass_1{DACDBDACourse.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1696249200494" units="1" version="1.0"/>
+</session>

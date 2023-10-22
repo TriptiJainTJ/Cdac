@@ -1,0 +1,36 @@
+/**
+ * 
+ */
+package devpack;
+
+/**
+ * 
+ */
+public class MyClass1 
+{
+	private int num;
+
+	/**
+	 * @return the num
+	 */
+	public int getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num the num to set
+	 */
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	/**
+	 * 
+	 */
+	public MyClass1() {
+		super();
+		// constructor
+	}
+	
+	
+}
